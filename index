@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>*{margin:0;padding:0}html,body,iframe{width:100%;height:100%;border:none;overflow:hidden}
+.inapp-guide{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;text-align:center;padding-top:30vh;font-family:-apple-system,sans-serif}
+.inapp-guide p{font-size:18px;color:#333;margin-bottom:20px}
+.inapp-guide small{font-size:14px;color:#888}
+</style>
+<script>
+var ua = navigator.userAgent.toLowerCase();
+if(ua.indexOf('kakaotalk') > -1){
+  if(ua.indexOf('android') > -1){
+    location.href = 'intent://' + location.href.replace(/https?:\/\//,'') + '#Intent;scheme=https;package=com.android.chrome;end';
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('inapp').style.display='block';
+    });
+  }
+}
+</script>
+</head>
+<body>
+<div id="inapp" class="inapp-guide">
+<p>⋮ 또는 ··· 메뉴를 눌러<br><b>"다른 브라우저로 열기"</b>를<br>선택해주세요</p>
+<small>카카오톡 내 브라우저에서는<br>일부 기능이 제한됩니다</small>
+</div>
+<iframe src="https://script.google.com/macros/s/AKfycbx_vCTkuN1txAde4zXocmr7X-UaXDxzZm_C2uRCTHIrw5-wkGkLI9UggJa5kGWZ0TLbpw/exec"></iframe>
+</body>
+</html>
+```
+
+**2) `pre` repo Settings → Pages → Branch: main → Save → Custom domain: `pre.sukfilm.co.kr`**
+
+**3) 닷홈 DNS에서 CNAME 추가**
+- 이름: `pre`
+- 타입: CNAME
+- 값: `sukfilmpre-lgtm.github.io`
+
+**4) `production` repo의 index.html 수정** — iframe src만 교체:
+```
+https://script.google.com/macros/s/AKfycbx3jWdj5wC4hGhzoTPKNZDNZZYXDvufdeW53SzsXUolqDgsDj0gmdWNJxUuBxhkNpuA7A/exec
